@@ -37,6 +37,17 @@ app.post('/add-task', async (req, res) => {
 	}
 });
 
+// To display all tasks in tasks page
+app.get('/tasks', async (req, res) => {
+	try {
+		const result = await pool.query(`SELECT * FROM tasks ORDER BY id DESC`);
+		res.json(result.rows);
+	} catch (error) {
+		console.error('Error fetching tasks:', error);
+		res.status(500).send({ error: error.message });
+	}
+});
+
 app.get('/', (req, res) => {
 	res.send('Welcome to the Express API!');
 });
