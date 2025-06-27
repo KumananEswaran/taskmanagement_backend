@@ -25,7 +25,7 @@ app.post(
 		body('title').notEmpty().withMessage('Title is required'),
 		body('description').notEmpty().withMessage('Description is required'),
 		body('status')
-			.isIn(['Pending', 'In progress', 'Completed'])
+			.isIn(['New', 'In progress', 'Completed'])
 			.withMessage('Status must be Pending, In progress, or Completed'),
 	],
 	async (req, res) => {
@@ -68,7 +68,7 @@ app.put(
 	'/tasks/:id',
 	[
 		body('status')
-			.isIn(['Pending', 'In progress', 'Completed'])
+			.isIn(['New', 'In progress', 'Completed'])
 			.withMessage('Status must be Pending, In progress, or Completed'),
 	],
 
